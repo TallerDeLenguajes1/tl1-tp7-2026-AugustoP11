@@ -1,4 +1,4 @@
-namespace Cargos;
+namespace EspacioEmpleado;
 
 public enum Cargo
 {

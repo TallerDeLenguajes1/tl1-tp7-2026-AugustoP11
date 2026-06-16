@@ -1,6 +1,4 @@
-﻿using Cargos;
-
-namespace EspacioEmpleado;
+﻿namespace EspacioEmpleado;
 
 public class EspacioEmpleado
 {
@@ -12,4 +10,5 @@ public class EspacioEmpleado
     private double sueldoBasico;
     private Cargo cargo;
 
+    
 }
