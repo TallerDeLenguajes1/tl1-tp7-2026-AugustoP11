@@ -1,4 +1,5 @@
 ﻿using EspacioCalculadora;
+using EspacioEmpleado;
 
 //Interfaz para operar la calculadora
 int opcion = 1;
@@ -12,7 +13,7 @@ do
     Console.WriteLine("Ingrese 3 para multiplicar un valor");
     Console.WriteLine("Ingrese 4 para dividir un valor");
     Console.WriteLine("Ingrese 5 para limpiar la memoria");
-    Console.WriteLine("Ingrese 6 para finalizar el programa");
+    Console.WriteLine("Ingrese 6 para finalizar la calculadora");
 
     opcion = int.Parse(Console.ReadLine());
 
@@ -59,3 +60,4 @@ do
         break;
     }
 } while (opcion != 6);
+

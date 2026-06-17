@@ -21,7 +21,7 @@ public class Empleado
         this.cargo = cargo;
     }
 
-    public int Antiguedad()
+    public int CalcularAntiguedad()
     {
         int Antiguedad = this.fechaIngresoAEmpresa.Year - DateTime.Today.Year;
 
@@ -54,5 +54,48 @@ public class Empleado
         }
     }
 
-    
+    private double calcularAdicional()
+    {
+        int Antiguedad = CalcularAntiguedad();
+        double adicional;
+
+        if (Antiguedad < 20)
+        {
+            adicional = this.sueldoBasico * 0.01 * Antiguedad;
+        } else
+        {
+            adicional = this.sueldoBasico * 0.25;
+        }
+
+        //Si es ingeniero o especialista se aumenta 50%
+        switch (this.cargo)
+        {
+            case Cargo.Ingeniero:
+            case Cargo.Especialista:
+                adicional *= 1.5;
+            break;
+            default:
+            break;
+        }
+
+        //Si es casado se suma $150.000
+        switch (this.estadoCivil)
+        {
+            case EstadoCivil.Casado:
+                adicional += 150000;
+            break;
+            default:
+            break;
+        }
+
+        return adicional;
+
+    }
+
+    public double CalcularSalario()
+    {
+        double salario = this.sueldoBasico + calcularAdicional();
+        
+        return salario;
+    }
 }

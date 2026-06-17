@@ -4,8 +4,8 @@ namespace EspacioEmpleado;
 
 public enum EstadoCivil
 {
-    S,
-    C,
-    V,
-    D
+    Soltero,
+    Casado,
+    Viudo,
+    Divorciado
 }
