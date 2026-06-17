@@ -150,12 +150,16 @@ for (int i = 0; i < empleadosACargar; i++)
 }
 */
 
+//Cargo los empleados con datos predeterminados, si se quiere ingresar datos comentar el codigo de abajo y descomentar el de arriba
 empleados[0] = new Empleado("Juan", "Perez", "09/07/1995", EstadoCivil.Soltero, "17/06/2026", 1000000, Cargo.Administrativo);
 empleados[1] = new Empleado("Pepito", "Juarez", "09/07/1995", EstadoCivil.Casado, "17/06/2026", 1000000, Cargo.Ingeniero);
 empleados[2] = new Empleado("Luis", "Rodriguez", "09/07/1995", EstadoCivil.Divorciado, "17/06/1990", 1000000, Cargo.Especialista);
 
+//Muestro los salarios
 Console.WriteLine($"Salario 1: ${empleados[0].CalcularSalario()}");
 Console.WriteLine($"Salario 2: ${empleados[1].CalcularSalario()}");
 Console.WriteLine($"Salario 3: ${empleados[2].CalcularSalario()}");
 
+//Muestro el monto total en concepto de salarios
 Console.WriteLine($"Monto total en concepto de salarios: ${empleados[0].CalcularSalario() + empleados[1].CalcularSalario() + empleados[2].CalcularSalario()}");
+
