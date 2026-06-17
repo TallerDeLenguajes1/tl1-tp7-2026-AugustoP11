@@ -61,3 +61,88 @@ do
     }
 } while (opcion != 6);
 
+
+//___________________________________________________________________
+//___________________________________________________________________
+//Parte del programa para trabajar en el ejercicio 2.2
+//___________________________________________________________________
+//___________________________________________________________________
+
+
+const int empleadosACargar = 3;
+
+Empleado[] empleados = new Empleado[empleadosACargar];
+
+for (int i = 0; i < empleadosACargar; i++)
+{
+    //Nombre empleado
+    Console.WriteLine($"Ingrese el nombre del empleado {i+1}:");
+    string NombreEmpleado = Console.ReadLine();
+
+    //Apellido empleado
+    Console.WriteLine($"Ingrese el apellido del empleado {i+1}:");
+    string ApellidoEmpleado = Console.ReadLine();
+
+    //Fecha de nacimiento empleado
+    Console.WriteLine($"Ingrese la fecha de nacimiento del empleado {i+1} (formato: dd/MM/yyyy):");
+    string FechaNacimientoEmpleado = Console.ReadLine();
+
+    //Genero de forma aleatoria el estado civil del empleado
+    Random rnd = new Random();
+    int EnteroAleatorio = rnd.Next(0, 4);
+    EstadoCivil EstadocivilEmpleado;
+    switch (EnteroAleatorio)
+    {
+        case 0:
+            EstadocivilEmpleado = EstadoCivil.Soltero;
+        break;
+
+        case 1:
+            EstadocivilEmpleado = EstadoCivil.Casado;
+        break;
+        
+        case 2:
+            EstadocivilEmpleado = EstadoCivil.Viudo;
+        break;
+
+        default:
+            EstadocivilEmpleado = EstadoCivil.Divorciado;
+        break;
+    }
+
+    //Fecha de ingreso a empresa empleado
+    Console.WriteLine($"Ingrese la fecha de ingreso a la empresa del empleado {i+1} (formato: dd/MM/yyyy):");
+    string FechaIngresoEmpleado = Console.ReadLine();
+
+    //Sueldo basico
+    Console.WriteLine($"Ingrese el sueldo basico del empleado {i+1}:");
+    double SueldoBasicoEmpleado = double.Parse(Console.ReadLine());
+
+    //Genero de forma aleatoria el cargo del empleado
+    
+    Cargo CargoEmpleado;
+    switch (EnteroAleatorio)
+    {
+        case 0:
+            CargoEmpleado = Cargo.Auxiliar;
+        break;
+
+        case 1:
+            CargoEmpleado = Cargo.Administrativo;
+        break;
+        
+        case 2:
+            CargoEmpleado = Cargo.Ingeniero;
+        break;
+
+        case 3:
+            CargoEmpleado = Cargo.Especialista;
+        break;
+
+        default:
+            CargoEmpleado = Cargo.Investigador;
+        break;
+    }
+
+    empleados[i] = new Empleado(NombreEmpleado, ApellidoEmpleado, FechaNacimientoEmpleado, EstadocivilEmpleado, FechaIngresoEmpleado, SueldoBasicoEmpleado, CargoEmpleado);
+}

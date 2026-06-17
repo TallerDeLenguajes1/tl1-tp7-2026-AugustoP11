@@ -20,11 +20,12 @@ public class Empleado
 
     public Empleado(string nombre, string apellido, string fechaDeNacimiento, EstadoCivil estadoCivil, string fechaIngresoAEmpresa, double sueldoBasico, Cargo cargo)
     {
+        string formateFecha = "dd/MM/yyyy";
         this.Nombre = nombre;
         this.Apellido = apellido;
-        this.FechaDeNacimiento = DateTime.Parse(fechaDeNacimiento, System.Globalization.CultureInfo.InvariantCulture);
+        this.FechaDeNacimiento = DateTime.ParseExact(fechaDeNacimiento, formateFecha, System.Globalization.CultureInfo.InvariantCulture);
         this.EstadoCivil = estadoCivil;
-        this.FechaIngresoAEmpresa = DateTime.Parse(fechaIngresoAEmpresa, System.Globalization.CultureInfo.InvariantCulture);
+        this.FechaIngresoAEmpresa = DateTime.ParseExact(fechaIngresoAEmpresa, formateFecha, System.Globalization.CultureInfo.InvariantCulture);
         this.SueldoBasico = sueldoBasico;
         this.Cargo = cargo;
     }
