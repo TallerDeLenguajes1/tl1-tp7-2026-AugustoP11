@@ -23,9 +23,36 @@ public class Empleado
 
     public int Antiguedad()
     {
-        DateTime Antiguedad = DateTime.Parse(this.fechaIngresoAEmpresa - DateTime.Today);
+        int Antiguedad = this.fechaIngresoAEmpresa.Year - DateTime.Today.Year;
 
-        
-        return 0;
+        if (Antiguedad > 0)
+        {
+            return Antiguedad;
+        } else
+        {
+            return 1;
+        }
     }
+
+    public int Edad()
+    {
+        int Edad = fechaDeNacimiento.Year;
+        return Edad;
+    }
+
+    public int TiempoParaJubilacion()
+    {
+        int TiempoRestante = 65 - (DateTime.Now.Year - fechaDeNacimiento.Year);
+
+        if (TiempoRestante > 0)
+        {
+            return TiempoRestante;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    
 }
