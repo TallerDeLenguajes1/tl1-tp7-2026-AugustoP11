@@ -32,7 +32,7 @@ public class Empleado
 
     public int CalcularAntiguedad()
     {
-        int Antiguedad = FechaIngresoAEmpresa.Year - DateTime.Today.Year;
+        int Antiguedad = DateTime.Today.Year - FechaIngresoAEmpresa.Year;
 
         if (Antiguedad > 0)
         {

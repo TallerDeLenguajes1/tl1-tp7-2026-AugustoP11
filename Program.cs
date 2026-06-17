@@ -152,8 +152,8 @@ for (int i = 0; i < empleadosACargar; i++)
 
 //Cargo los empleados con datos predeterminados, si se quiere ingresar datos comentar el codigo de abajo y descomentar el de arriba
 empleados[0] = new Empleado("Juan", "Perez", "09/07/1995", EstadoCivil.Soltero, "17/06/2026", 1000000, Cargo.Administrativo);
-empleados[1] = new Empleado("Pepito", "Juarez", "09/07/1995", EstadoCivil.Casado, "17/06/2026", 1000000, Cargo.Ingeniero);
-empleados[2] = new Empleado("Luis", "Rodriguez", "09/07/1995", EstadoCivil.Divorciado, "17/06/1990", 1000000, Cargo.Especialista);
+empleados[1] = new Empleado("Pepito", "Juarez", "09/07/1994", EstadoCivil.Casado, "17/06/2026", 1000000, Cargo.Ingeniero);
+empleados[2] = new Empleado("Luis", "Rodriguez", "09/07/1975", EstadoCivil.Divorciado, "17/06/1990", 1000000, Cargo.Especialista);
 
 //Muestro los salarios
 Console.WriteLine($"Salario 1: ${empleados[0].CalcularSalario()}");
@@ -163,3 +163,45 @@ Console.WriteLine($"Salario 3: ${empleados[2].CalcularSalario()}");
 //Muestro el monto total en concepto de salarios
 Console.WriteLine($"Monto total en concepto de salarios: ${empleados[0].CalcularSalario() + empleados[1].CalcularSalario() + empleados[2].CalcularSalario()}");
 
+//Muestro por pantalla los datos del empleado mas proximo a jubilarse (incluyendo antiguedad, edad del empleado, cantidad de años restantes para jubilarse, salario correspondiente)
+
+int aniosRestantes = 1000, aniosAuxiliar;
+foreach (var empleado in empleados)
+{
+    aniosAuxiliar = empleado.TiempoParaJubilacion();
+
+    if (aniosAuxiliar < aniosRestantes)
+    {
+        aniosRestantes = aniosAuxiliar;
+    }
+}
+
+foreach (var empleado in empleados)
+{
+    aniosAuxiliar = empleado.TiempoParaJubilacion();
+
+    if (aniosRestantes == aniosAuxiliar)
+    {
+        Console.WriteLine($"NOMBRE: {empleado.Nombre}");
+
+        Console.WriteLine($"APELLIDO: {empleado.Apellido}");
+
+        Console.WriteLine($"FECHA DE NACIMIENTO: {empleado.FechaDeNacimiento}");
+        
+        Console.WriteLine($"ESTADO CIVIL: {empleado.EstadoCivil}");
+        
+        Console.WriteLine($"FECHA DE INGRESO A LA EMPRESA: {empleado.FechaIngresoAEmpresa}");
+        
+        Console.WriteLine($"SUELDO BASICO: ${empleado.SueldoBasico}");
+        
+        Console.WriteLine($"CARGO: {empleado.Cargo}");
+        
+        Console.WriteLine($"ANTIGUEDAD: {empleado.CalcularAntiguedad()}");
+        
+        Console.WriteLine($"EDAD: {DateTime.Now.Year-empleado.FechaDeNacimiento.Year}");
+        
+        Console.WriteLine($"AÑOS RESTANTES PARA JUBILARSE: {empleado.TiempoParaJubilacion()}");
+        
+        Console.WriteLine($"SALARIO CORRESPONDIENTE: ${empleado.CalcularSalario()}");
+    }
+}
