@@ -10,20 +10,28 @@ public class Empleado
     private double sueldoBasico;
     private Cargo cargo;
 
+    public string Nombre { get => nombre; set => nombre = value; }
+    public string Apellido { get => apellido; set => apellido = value; }
+    public DateTime FechaDeNacimiento { get => fechaDeNacimiento; set => fechaDeNacimiento = value; }
+    public EstadoCivil EstadoCivil { get => estadoCivil; set => estadoCivil = value; }
+    public DateTime FechaIngresoAEmpresa { get => fechaIngresoAEmpresa; set => fechaIngresoAEmpresa = value; }
+    public double SueldoBasico { get => sueldoBasico; set => sueldoBasico = value; }
+    public Cargo Cargo { get => cargo; set => cargo = value; }
+
     public Empleado(string nombre, string apellido, string fechaDeNacimiento, EstadoCivil estadoCivil, string fechaIngresoAEmpresa, double sueldoBasico, Cargo cargo)
     {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaDeNacimiento = DateTime.Parse(fechaDeNacimiento, System.Globalization.CultureInfo.InvariantCulture);
-        this.estadoCivil = estadoCivil;
-        this.fechaIngresoAEmpresa = DateTime.Parse(fechaIngresoAEmpresa, System.Globalization.CultureInfo.InvariantCulture);
-        this.sueldoBasico = sueldoBasico;
-        this.cargo = cargo;
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.FechaDeNacimiento = DateTime.Parse(fechaDeNacimiento, System.Globalization.CultureInfo.InvariantCulture);
+        this.EstadoCivil = estadoCivil;
+        this.FechaIngresoAEmpresa = DateTime.Parse(fechaIngresoAEmpresa, System.Globalization.CultureInfo.InvariantCulture);
+        this.SueldoBasico = sueldoBasico;
+        this.Cargo = cargo;
     }
 
     public int CalcularAntiguedad()
     {
-        int Antiguedad = fechaIngresoAEmpresa.Year - DateTime.Today.Year;
+        int Antiguedad = FechaIngresoAEmpresa.Year - DateTime.Today.Year;
 
         if (Antiguedad > 0)
         {
@@ -36,13 +44,13 @@ public class Empleado
 
     public int Edad()
     {
-        int Edad = fechaDeNacimiento.Year;
+        int Edad = FechaDeNacimiento.Year;
         return Edad;
     }
 
     public int TiempoParaJubilacion()
     {
-        int TiempoRestante = 65 - (DateTime.Now.Year - fechaDeNacimiento.Year);
+        int TiempoRestante = 65 - (DateTime.Now.Year - FechaDeNacimiento.Year);
 
         if (TiempoRestante > 0)
         {
@@ -61,14 +69,14 @@ public class Empleado
 
         if (Antiguedad < 20)
         {
-            adicional = sueldoBasico * 0.01 * Antiguedad;
+            adicional = SueldoBasico * 0.01 * Antiguedad;
         } else
         {
-            adicional = sueldoBasico * 0.25;
+            adicional = SueldoBasico * 0.25;
         }
 
         //Si es ingeniero o especialista se aumenta 50%
-        switch (cargo)
+        switch (Cargo)
         {
             case Cargo.Ingeniero:
             case Cargo.Especialista:
@@ -79,7 +87,7 @@ public class Empleado
         }
 
         //Si es casado se suma $150.000
-        switch (estadoCivil)
+        switch (EstadoCivil)
         {
             case EstadoCivil.Casado:
                 adicional += 150000;
@@ -94,7 +102,7 @@ public class Empleado
 
     public double CalcularSalario()
     {
-        double salario = sueldoBasico + calcularAdicional();
+        double salario = SueldoBasico + calcularAdicional();
 
         return salario;
     }
